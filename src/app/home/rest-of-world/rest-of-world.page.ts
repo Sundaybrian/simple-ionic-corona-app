@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { KenyaService } from '../kenya-service.service';
 
 @Component({
   selector: 'app-rest-of-world',
@@ -7,9 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestOfWorldPage implements OnInit {
 
-  constructor() { }
+  restofData: any;
+  results: any;
+
+  constructor(
+    private KenyaService:KenyaService
+  ) { }
 
   ngOnInit() {
+    this.KenyaService.loadWorldData().toPromise().then(
+      (results) => {
+        this.restofData = results;
+        this.sliceData();
+      }
+    );
   }
+
+  sliceData() {
+    this.results = this.restofData.data.covid19Stats.slice(-161);
+
+    console.log(this.results);
+    
+  }
+      
 
 }

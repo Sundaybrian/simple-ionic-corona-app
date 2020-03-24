@@ -35,7 +35,7 @@ export class KenyaService {
         'x-rapidapi-host': "covid-19-coronavirus-statistics.p.rapidapi.com",
         'x-rapidapi-key': "dabceb15d5msh12757e7eeeaf772p1d80bdjsn15872dd7ce60"
       }),
-      params: new HttpParams().set("country", "")
+    
     });
   }
 
