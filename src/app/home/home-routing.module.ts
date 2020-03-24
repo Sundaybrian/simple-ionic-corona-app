@@ -12,13 +12,12 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: './kenya/kenya.module#KenyaPageModule'
+            loadChildren: () => import('./kenya/kenya.module').then( m => m.KenyaPageModule)
           },
 
           {
             path: 'kenyamap',
-            loadChildren:
-              './kenya/kenya-map/kenya-map.module#KenyaMapPageModule'
+            loadChildren: () => import('./kenya/kenya-map/kenya-map.module').then( m => m.KenyaMapPageModule)
           }
         ]
       },
@@ -28,12 +27,11 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: './africa/africa.module#AfricaPageModule'
+            loadChildren: () => import('./africa/africa.module').then( m => m.AfricaPageModule)
           },
           {
             path: 'africamap',
-            loadChildren:
-              './africa/africa-map/africa-map.module#AfricaMapPageModule'
+            loadChildren: () => import('./africa/africa-map/africa-map.module').then( m => m.AfricaMapPageModule)
           }
         ]
       },
@@ -43,8 +41,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren:
-              './rest-of-world/rest-of-word.module#RestOfWorldPageModule'
+            loadChildren: () => import('./rest-of-world/rest-of-world.module').then( m => m.RestOfWorldPageModule)
           }
         ]
       },
