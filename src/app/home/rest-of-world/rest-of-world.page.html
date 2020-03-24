@@ -24,6 +24,10 @@
            </ion-card>
         </ion-list>
       </ion-col>
+
+      <ion-col text-center *ngIf="isLoading">
+        <ion-spinner color="primary"></ion-spinner>
+      </ion-col>
     </ion-row>
   </ion-grid>
 

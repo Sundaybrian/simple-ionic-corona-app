@@ -7,7 +7,7 @@ import { KenyaService } from '../kenya-service.service';
   styleUrls: ['./rest-of-world.page.scss'],
 })
 export class RestOfWorldPage implements OnInit {
-
+  isLoading = true;
   restofData: any;
   results: any;
 
@@ -26,9 +26,7 @@ export class RestOfWorldPage implements OnInit {
 
   sliceData() {
     this.results = this.restofData.data.covid19Stats.slice(-161);
-
-    console.log(this.results);
-    
+    this.isLoading = false;
   }
       
 
