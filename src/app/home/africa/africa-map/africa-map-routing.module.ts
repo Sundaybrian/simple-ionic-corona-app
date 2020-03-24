@@ -1,16 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { KenyaPage } from './kenya.page';
+import { AfricaMapPage } from './africa-map.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: KenyaPage
-  },
-  {
-    path: 'kenya-map',
-    loadChildren: () => import('./kenya-map/kenya-map.module').then( m => m.KenyaMapPageModule)
+    component: AfricaMapPage
   }
 ];
 
@@ -18,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class KenyaPageRoutingModule {}
+export class AfricaMapPageRoutingModule {}

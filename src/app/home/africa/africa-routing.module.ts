@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: AfricaPage
+  },
+  {
+    path: 'africa-map',
+    loadChildren: () => import('./africa-map/africa-map.module').then( m => m.AfricaMapPageModule)
   }
 ];
 
