@@ -12,6 +12,8 @@ export class KenyaPage implements OnInit {
 
   loadedCase: Case [] = [];
   results: any;
+  resultsworld:any;
+  worldData: [] = [];
   constructor( private KenyaService: KenyaService) { }
 
   ngOnInit() {
@@ -19,6 +21,21 @@ export class KenyaPage implements OnInit {
       this.results = results;
     });
 
+
+    this.KenyaService.loadWorldData().toPromise().then(
+      (results => {
+        console.log(results,"##########3");
+        this.resultsworld = results;
+        this.slimData();
+      })
+    );
+
+  }
+
+  slimData() {
+    // fetch the rest of the world data
+    this.worldData = this.resultsworld.data.covid19Stats.slice(-161);
+    console.log(this.worldData);
   }
 
 }
