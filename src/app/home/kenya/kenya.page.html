@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>kenya</ion-title>
+    <ion-title>Kenya</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,7 +11,28 @@
        <ion-card *ngIf="results" >
         <ion-card-header>
           <ion-card-title>
-            Country: {{ results.data.covid19Stats[0].country }}
+            World Stats
+          </ion-card-title>
+          <ion-card-subtitle>Last Update: {{ worldstats.statistic_taken_at | date:'short'}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <p><ion-text color="warning">Total Cases: {{ worldstats.total_cases}}</ion-text></p>
+          <p><ion-text color="danger">Deaths: {{ worldstats.total_deaths }}</ion-text></p>
+          <p><ion-text color="success">Recovered: {{ worldstats.total_recovered}}
+          </ion-text></p>
+          <p><ion-text color="tertiary">New Cases: {{ worldstats.new_cases}}
+          </ion-text></p>
+          <p>New Deaths: {{ worldstats.new_deaths}}</p>
+        </ion-card-content>
+       </ion-card>
+
+      </ion-col>
+
+      <ion-col size="12" size-sm="8" offset-sm="2" text-center>
+       <ion-card *ngIf="results" >
+        <ion-card-header>
+          <ion-card-title>
+            Country: {{ results.data.covid19Stats[0].country }} {{ results.data.covid19Stats[0].flag }} 
           </ion-card-title>
           <ion-card-subtitle>Last Checked: {{ results.data.lastChecked | date:'short'}}</ion-card-subtitle>
         </ion-card-header>
