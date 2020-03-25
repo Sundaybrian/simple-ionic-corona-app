@@ -8,8 +8,8 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-list *ngIf="results">
-          <ion-card *ngFor="let item of results" >
+        <ion-virtual-scroll [items]="results" >
+          <ion-card *virtualItem="let item" >
             <ion-card-header>
               <ion-card-title>
                 Country: {{ item.country }}  {{item.flag}}
@@ -22,7 +22,7 @@
               <p><ion-text color="success">Recovered: {{ item.recovered }}</ion-text></p>
             </ion-card-content>
            </ion-card>
-        </ion-list>
+        </ion-virtual-scroll>
       </ion-col>
 
       <ion-col text-center *ngIf="isLoading">

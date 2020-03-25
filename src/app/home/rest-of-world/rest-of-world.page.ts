@@ -16,6 +16,9 @@ export class RestOfWorldPage implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+  
+  ionViewWillEnter(){
     this.KenyaService.loadWorldData().toPromise().then(
       (results) => {
         this.restofData = results;

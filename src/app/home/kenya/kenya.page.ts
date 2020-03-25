@@ -13,6 +13,9 @@ export class KenyaPage implements OnInit {
   constructor(private KenyaService: KenyaService) {}
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter() {
     // fetch kenyastats
     this.KenyaService.loadData()
       .toPromise()
@@ -27,8 +30,6 @@ export class KenyaPage implements OnInit {
         this.worldstats = result;
         console.log(this.worldstats);
       });
-
-
   }
 
   mapCountryToFlag(obj) {
