@@ -12,7 +12,7 @@
           <ion-card *ngFor="let item of results" >
             <ion-card-header>
               <ion-card-title>
-                Country: {{ item.country }}
+                Country: {{ item.country }}  {{item.flag}}
               </ion-card-title>
               <ion-card-subtitle>Last Update: {{ item.lastUpdate | date:'short' }}</ion-card-subtitle>
             </ion-card-header>

@@ -32,7 +32,7 @@
        <ion-card *ngIf="results" >
         <ion-card-header>
           <ion-card-title>
-            Country: {{ results.data.covid19Stats[0].country }} {{ results.data.covid19Stats[0].flag }} 
+            Country: {{ results.data.covid19Stats[0].country }} {{ results.data.covid19Stats[0].flag }}
           </ion-card-title>
           <ion-card-subtitle>Last Checked: {{ results.data.lastChecked | date:'short'}}</ion-card-subtitle>
         </ion-card-header>
@@ -47,7 +47,7 @@
 
       </ion-col>
 
-      <ion-col>
+      <ion-col text-center>
         <ion-spinner color="primary" *ngIf="isLoading"></ion-spinner>
       </ion-col>
     </ion-row>
