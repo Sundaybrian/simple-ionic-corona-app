@@ -12,6 +12,7 @@ export class RestOfWorldPage implements OnInit {
   results: any;
   resultsCopy: any;
   query = "";
+  searching: any = false;
 
   constructor(
     private KenyaService:KenyaService
@@ -69,15 +70,20 @@ export class RestOfWorldPage implements OnInit {
     // filter the results array depending on the query
     // if we find a query match return a new array,else return original results
     let filteredResults = query ? this.results.filter(c => {
-      console.log(c['country'],"####");
       return c['country'].toLowerCase().includes(this.query.toLowerCase());
     }): this.results = this.resultsCopy;
-
     return filteredResults;
   }
 
   setFilteredCountries(){
+
     this.results = this.filterCountries(this.query);
+    this.searching = false;
+
+  }
+
+  searchInput() {
+    this.searching = true;
   }
 
 
