@@ -17,7 +17,7 @@ export class RestOfWorldPage implements OnInit {
 
   ngOnInit() {
   }
-  
+
   ionViewWillEnter(){
     this.KenyaService.loadWorldData().toPromise().then(
       (results) => {
@@ -61,6 +61,16 @@ export class RestOfWorldPage implements OnInit {
       this.isLoading = false;
 
     });
+  }
+
+  filter(query: string){
+    // filter the results array depending on the query
+    // if we find a query match return a new array,else return original results
+
+    const filteredResults = query ? this.results.filter(c =>
+      c['country'].toLowerCase().includes(query.toLowerCase())
+    ): this.results;
+    return filteredResults;
   }
 
 
