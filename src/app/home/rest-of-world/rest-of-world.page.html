@@ -5,11 +5,16 @@
 </ion-header>
 
 <ion-content>
+  <ion-searchbar
+  [(ngModel)]="query"
+  (ionChange)="setFilteredCountries()"
+  >
+  </ion-searchbar>
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-virtual-scroll [items]="results" >
-          <ion-card *virtualItem="let item" >
+        <ion-list *ngIf="results" >
+          <ion-card *ngFor="let item of results">
             <ion-card-header>
               <ion-card-title>
                 Country: {{ item.country }}  {{item.flag}}
@@ -22,7 +27,7 @@
               <p><ion-text color="success">Recovered: {{ item.recovered }}</ion-text></p>
             </ion-card-content>
            </ion-card>
-        </ion-virtual-scroll>
+        </ion-list>
       </ion-col>
 
       <ion-col text-center *ngIf="isLoading">

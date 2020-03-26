@@ -10,6 +10,8 @@ export class RestOfWorldPage implements OnInit {
   isLoading = true;
   restofData: any;
   results: any;
+  resultsCopy: any;
+  query = "";
 
   constructor(
     private KenyaService:KenyaService
@@ -45,7 +47,7 @@ export class RestOfWorldPage implements OnInit {
 
         // if found add a flag to that country
         if(cf){
-          console.log(country.country, cf.flag,"############");
+          // console.log(country.country, cf.flag,"############");
           country.flag = cf.flag;
           results.push(country);
 
@@ -57,20 +59,25 @@ export class RestOfWorldPage implements OnInit {
 
       });
       // rewrite the class results value
-      this.results = results;
+      this.resultsCopy = this.results = results;
       this.isLoading = false;
 
     });
   }
 
-  filter(query: string){
+  filterCountries(query: string){
     // filter the results array depending on the query
     // if we find a query match return a new array,else return original results
+    let filteredResults = query ? this.results.filter(c => {
+      console.log(c['country'],"####");
+      return c['country'].toLowerCase().includes(this.query.toLowerCase());
+    }): this.results = this.resultsCopy;
 
-    const filteredResults = query ? this.results.filter(c =>
-      c['country'].toLowerCase().includes(query.toLowerCase())
-    ): this.results;
     return filteredResults;
+  }
+
+  setFilteredCountries(){
+    this.results = this.filterCountries(this.query);
   }
 
 
