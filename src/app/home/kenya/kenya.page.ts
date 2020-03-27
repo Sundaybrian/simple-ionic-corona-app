@@ -20,9 +20,8 @@ export class KenyaPage implements OnInit {
     this.KenyaService.loadData()
       .toPromise()
       .then((results: any) => {
-        this.results = results;
         this.isLoading = false;
-        this.mapCountryToFlag(this.results.data.covid19Stats[0]);
+        this.mapCountryToFlag(results.latest_stat_by_country[0]);
       });
 
       // fetch world stats
@@ -35,9 +34,9 @@ export class KenyaPage implements OnInit {
   mapCountryToFlag(obj) {
     return this.KenyaService.getJson().toPromise().then(data => {
          data['countries'].forEach(country => {
-          if(country["name"].toLowerCase() == obj['country'].toLowerCase()){
+          if(country["name"].toLowerCase() == obj['country_name'].toLowerCase()){
              obj['flag'] = country['flag'];
-             this.results.data.covid19Stats[0] = obj;
+             this.results = obj;
           }
 
         });

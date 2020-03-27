@@ -32,16 +32,20 @@
        <ion-card *ngIf="results" >
         <ion-card-header>
           <ion-card-title>
-            Country: {{ results.data.covid19Stats[0].country }} {{ results.data.covid19Stats[0].flag }}
+            Country: {{ results.country_name }} {{ results.flag }}
           </ion-card-title>
-          <ion-card-subtitle>Last Checked: {{ results.data.lastChecked | date:'short'}}</ion-card-subtitle>
+          <ion-card-subtitle>Last Checked: {{ results.record_date | date:'short'}}</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
-          <p><ion-text color="warning">Confirmed: {{ results.data.covid19Stats[0].confirmed}}</ion-text></p>
-          <p><ion-text color="danger">Deaths: {{ results.data.covid19Stats[0].deaths }}</ion-text></p>
-          <p><ion-text color="success">Recovered: {{results.data.covid19Stats[0].recovered}}
+          <p><ion-text color="warning">Cases: {{ results.total_cases}}</ion-text></p>
+          <p><ion-text color="danger">Deaths: {{ results.total_deaths }}</ion-text></p>
+          <p><ion-text color="success">Recovered: {{results.total_recovered}}
           </ion-text></p>
-          <p>Last Updated: {{ results.data.covid19Stats[0].lastUpdate | date:'short'}}</p>
+          <p><ion-text color="tertiary">New Cases: {{results.new_cases}}
+          </ion-text></p>
+          <p><ion-text color="tertiary">Active Cases: {{results.active_cases}}
+          </ion-text></p>
+          <p><ion-text color="danger">Critical: {{ results.serious_critical}}</ion-text></p>
         </ion-card-content>
        </ion-card>
 
