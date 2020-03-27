@@ -27,10 +27,10 @@ export class KenyaService {
 
   loadWorldData() {
     // load all countries with their specific data
-    return this.httpClient.get(`${this.baseurl}`, {
+    return this.httpClient.get("https://coronavirus-monitor.p.rapidapi.com/coronavirus/cases_by_country.php", {
       headers: new HttpHeaders({
-        "x-rapidapi-host": "covid-19-coronavirus-statistics.p.rapidapi.com",
-        "x-rapidapi-key": "dabceb15d5msh12757e7eeeaf772p1d80bdjsn15872dd7ce60"
+        "x-rapidapi-host": "coronavirus-monitor.p.rapidapi.com",
+  	    "x-rapidapi-key": "dabceb15d5msh12757e7eeeaf772p1d80bdjsn15872dd7ce60"
       })
     });
   }

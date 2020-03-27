@@ -21,18 +21,22 @@
       </ion-col>
 
       <ion-col>
-        <ion-list *ngIf="results" >
+        <ion-list *ngIf="results">
           <ion-card *ngFor="let item of results">
             <ion-card-header>
               <ion-card-title>
-                Country: {{ item.country }}  {{item.flag}}
+                Country: {{ item.country_name }}  {{item.flag}}
               </ion-card-title>
               <ion-card-subtitle>Last Update: {{ item.lastUpdate | date:'short' }}</ion-card-subtitle>
             </ion-card-header>
             <ion-card-content>
-              <p><ion-text color="warning">Confirmed: {{ item.confirmed}}</ion-text></p>
-              <p><ion-text color="danger">Deaths: {{ item.deaths }}</ion-text></p>
-              <p><ion-text color="success">Recovered: {{ item.recovered }}</ion-text></p>
+              <p><ion-text color="tertiary">Cases: {{ item.cases}}</ion-text></p>
+              <p><ion-text color="dark">Deaths: {{ item.deaths }}</ion-text></p>
+              <p><ion-text color="success">Recovered: {{ item.total_recovered }}</ion-text></p>
+              <p><ion-text color="danger">Critical: {{ item.serious_critical }}</ion-text></p>
+              <p><ion-text color="tertiary">Active Cases: {{ item.active_cases }}</ion-text></p>
+              <p><ion-text color="warning">New Cases: {{ item.new_cases }}</ion-text></p>
+              <p><ion-text color="dark">New Deaths: {{ item.new_deaths }}</ion-text></p>
             </ion-card-content>
            </ion-card>
         </ion-list>

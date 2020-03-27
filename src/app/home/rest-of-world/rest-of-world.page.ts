@@ -24,27 +24,22 @@ export class RestOfWorldPage implements OnInit {
   ionViewWillEnter(){
     this.KenyaService.loadWorldData().toPromise().then(
       (results) => {
-        this.restofData = results;
-        this.sliceData();
+        this.mapCountriesToFlags(results['countries_stat']);
       }
     );
   }
 
-  sliceData() {
-    this.results = this.restofData.data.covid19Stats.slice(-161);
-    this.mapCountriesToFlags(this.results);
-    // this.isLoading = false;
-  }
 
   mapCountriesToFlags(arr) {
     const results = [];
     const r =[];
+    // fetch local countries json
     this.KenyaService.getJson().toPromise().then(data => {
 
       arr.forEach(country => {
         // loop arr from the api
         // check if country name from arr is present in the countries json
-        let cf = data["countries"].find(co => co["name"].toLowerCase() == country["country"].toLowerCase() );
+        let cf = data["countries"].find(co => co["name"].toLowerCase() == country["country_name"].toLowerCase() );
 
         // if found add a flag to that country
         if(cf){
@@ -59,7 +54,7 @@ export class RestOfWorldPage implements OnInit {
         }
 
       });
-      // rewrite the class results value
+      // set the class properties values
       this.resultsCopy = this.results = results;
       this.isLoading = false;
 
@@ -70,7 +65,7 @@ export class RestOfWorldPage implements OnInit {
     // filter the results array depending on the query
     // if we find a query match return a new array,else return original results
     let filteredResults = query ? this.results.filter(c => {
-      return c['country'].toLowerCase().includes(this.query.toLowerCase());
+      return c['country_name'].toLowerCase().includes(this.query.toLowerCase());
     }): this.results = this.resultsCopy;
     return filteredResults;
   }
