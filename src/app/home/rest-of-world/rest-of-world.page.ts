@@ -24,6 +24,7 @@ export class RestOfWorldPage implements OnInit {
   ionViewWillEnter(){
     this.KenyaService.loadWorldData().toPromise().then(
       (results) => {
+        console.log(results);
         this.mapCountriesToFlags(results['countries_stat']);
       }
     );
@@ -32,7 +33,6 @@ export class RestOfWorldPage implements OnInit {
 
   mapCountriesToFlags(arr) {
     const results = [];
-    const r =[];
     // fetch local countries json
     this.KenyaService.getJson().toPromise().then(data => {
 
@@ -67,19 +67,12 @@ export class RestOfWorldPage implements OnInit {
     let filteredResults = query ? this.results.filter(c => {
       return c['country_name'].toLowerCase().includes(this.query.toLowerCase());
     }): this.results = this.resultsCopy;
+
     return filteredResults;
   }
 
   setFilteredCountries(){
-
-    this.results = this.filterCountries(this.query);
-    this.searching = false;
-
+    this.results = this.filterCountries(this.query)
   }
-
-  searchInput() {
-    this.searching = true;
-  }
-
 
 }

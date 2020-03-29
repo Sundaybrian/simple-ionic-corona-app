@@ -6,7 +6,7 @@
 
 ## Description
 
-This is a simple ionic app that renders covid-19 stats using this [api](https://rapidapi.com/KishCom/api/covid-19-coronavirus-statistics/endpoints).Nothing too fancy,just rendering the cases as reported in the various countries
+This is a simple ionic app that renders covid-19 stats using this [https://rapidapi.com/astsiatsko/api/coronavirus-monitor/endpoints](https://rapidapi.com/astsiatsko/api/coronavirus-monitor/endpoints).Nothing too fancy,just rendering the cases as reported in the various countries
 
 ## Setup/Installation Requirements
 
@@ -25,7 +25,7 @@ This is a simple ionic app that renders covid-19 stats using this [api](https://
 
 ## Known Bugs
 
-While building the apk you might run to this issues `Could not find plugin "proposal-numeric-separator".`just follow this [fix](https://www.reddit.com/r/angular/comments/flymj5/build_failing_please_help/)
+While building the apk you might run to this issues `Could not find plugin "proposal-numeric-separator".`just follow this [https://www.reddit.com/r/angular/comments/flymj5/build_failing_please_help/](https://www.reddit.com/r/angular/comments/flymj5/build_failing_please_help/)
 
 ## Technologies Used
 
