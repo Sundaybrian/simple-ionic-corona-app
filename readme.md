@@ -22,7 +22,7 @@ This is a simple ionic app that renders covid-19 stats using this [https://rapid
 - The app can also be built from android studio once you install an emulator
 - `ionic cordova run android --device` to run the application on your device connected via usb..ensure usb debugging is turned on.This is assumed the initial build has been done in android studio,then you can close it and build from your favourite editor
 - `ionic cordova build android` to build the apk, the previous command also builds the apk
-- Once your local build is complete the apk will be in the following location `platforms/android/app/build/outputs/apk/debug`.I have included a folder name `covidapk` to you can download my latest build
+- Once your local build is complete the apk will be in the following location `platforms/android/app/build/outputs/apk/debug`.I have included a folder name `covidapk` so you can download my latest build
 
 ## Known Bugs
 
