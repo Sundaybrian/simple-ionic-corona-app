@@ -36,6 +36,7 @@ export class RestOfWorldPage implements OnInit {
 
     this.searchControl.valueChanges.pipe(debounceTime(400))
     .subscribe(search => {
+      this.searching = false;
       this.setFilteredCountries(search);
     })
   }
@@ -83,6 +84,10 @@ export class RestOfWorldPage implements OnInit {
 
   setFilteredCountries(searchTerm){
     this.results = this.filterCountries(searchTerm)
+  }
+
+  onSearchInput(){
+    this.searching = true;
   }
 
 }
