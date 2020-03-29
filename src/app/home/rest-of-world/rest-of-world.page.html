@@ -4,7 +4,7 @@
   </ion-toolbar>
   <ion-toolbar>
     <ion-searchbar
-    [(ngModel)]="query"
+    [formControl]="searchControl"
     (ionChange)="setFilteredCountries()"
     >
     </ion-searchbar>

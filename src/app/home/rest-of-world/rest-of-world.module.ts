@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { RestOfWorldPageRoutingModule } from './rest-of-world-routing.module';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { RestOfWorldPage } from './rest-of-world.page';
 
 @NgModule({
@@ -13,6 +13,7 @@ import { RestOfWorldPage } from './rest-of-world.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    ReactiveFormsModule,
     RestOfWorldPageRoutingModule
   ],
   declarations: [RestOfWorldPage]

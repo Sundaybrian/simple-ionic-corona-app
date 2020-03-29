@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { KenyaService } from '../kenya-service.service';
+import { FormControl } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-rest-of-world',
@@ -11,23 +13,31 @@ export class RestOfWorldPage implements OnInit {
   restofData: any;
   results: any;
   resultsCopy: any;
-  query = "";
   searching: any = false;
+  searchControl: FormControl;
 
   constructor(
     private KenyaService:KenyaService
-  ) { }
+  ) {
+    this.searchControl = new FormControl();
+  }
 
   ngOnInit() {
   }
 
   ionViewWillEnter(){
+    // fetch world data
     this.KenyaService.loadWorldData().toPromise().then(
       (results) => {
-        console.log(results);
+        // map a country to a flag
         this.mapCountriesToFlags(results['countries_stat']);
       }
     );
+
+    this.searchControl.valueChanges.pipe(debounceTime(400))
+    .subscribe(search => {
+      this.setFilteredCountries(search);
+    })
   }
 
 
@@ -61,18 +71,18 @@ export class RestOfWorldPage implements OnInit {
     });
   }
 
-  filterCountries(query: string){
+  filterCountries(query){
     // filter the results array depending on the query
     // if we find a query match return a new array,else return original results
     let filteredResults = query ? this.results.filter(c => {
-      return c['country_name'].toLowerCase().includes(this.query.toLowerCase());
+      return c['country_name'].toLowerCase().includes(query.toLowerCase());
     }): this.results = this.resultsCopy;
 
     return filteredResults;
   }
 
-  setFilteredCountries(){
-    this.results = this.filterCountries(this.query)
+  setFilteredCountries(searchTerm){
+    this.results = this.filterCountries(searchTerm)
   }
 
 }
